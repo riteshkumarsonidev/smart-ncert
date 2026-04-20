@@ -1,0 +1,38 @@
+[
+    {
+        "user_id": "69d3781dc56b1dda77e2b637",
+        "subject": "Hindi",
+        "score": 2,
+        "total": 5,
+        "percentage": 40.0,
+        "date": "2026-04-06T14:52:09.556450",
+        "_id": "69d37b4132af4c612a591670"
+    },
+    {
+        "user_id": "69d4359bb4560cbe9a194810",
+        "subject": "English",
+        "score": 5,
+        "total": 5,
+        "percentage": 100.0,
+        "date": "2026-04-07T04:10:22.918223",
+        "_id": "69d43656b4560cbe9a194812"
+    },
+    {
+        "user_id": "69d4359bb4560cbe9a194810",
+        "subject": "English",
+        "score": 20,
+        "total": 50,
+        "percentage": 40.0,
+        "date": "2026-04-07T04:34:58.074890",
+        "_id": "69d43c1a60796e2c5b1f3d43"
+    },
+    {
+        "user_id": "69d4359bb4560cbe9a194810",
+        "subject": "English",
+        "score": 3,
+        "total": 5,
+        "percentage": 60.0,
+        "date": "2026-04-08T23:49:59.269761",
+        "_id": "69d69c4fc30e4dd0e282715b"
+    }
+]

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SMART NCERT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: #1f2937;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+        .register-card {
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="w-full max-w-lg px-6 py-12">
+        <div class="register-card p-10">
+            <div class="text-center mb-10">
+                <a href="/" class="inline-flex items-center gap-3 text-2xl font-bold font-outfit mb-8 text-indigo-600">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                        <i data-lucide="brain" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="tracking-tight">SMART NCERT</span>
+                </a>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
+                <p class="text-gray-500">Join our learning community today.</p>
+            </div>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="mb-6 p-4 rounded-xl text-sm {% if category == 'success' %}bg-emerald-50 text-emerald-700 border border-emerald-200{% else %}bg-rose-50 text-rose-700 border border-rose-200{% endif %}">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action="/register" method="POST" class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="John Doe" required>
+                    </div>
+                    <div>
+                        <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">Username</label>
+                        <input type="text" id="username" name="username" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="johndoe" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="john@example.com" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="••••••••" required>
+                </div>
+                <div>
+                    <label for="class" class="block text-sm font-semibold text-gray-700 mb-2">Class</label>
+                    <div class="relative">
+                        <select id="class" name="class" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all appearance-none" required>
+                            <option value="" disabled selected class="bg-white">Select your class</option>
+                            <option value="6" class="bg-white">Class 6</option>
+                            <option value="7" class="bg-white">Class 7</option>
+                            <option value="8" class="bg-white">Class 8</option>
+                            <option value="9" class="bg-white">Class 9</option>
+                            <option value="10" class="bg-white">Class 10</option>
+                            <option value="11" class="bg-white">Class 11</option>
+                            <option value="12" class="bg-white">Class 12</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"></i>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-indigo-200 hover:scale-[1.01] active:scale-[0.99]">
+                    Register Now
+                </button>
+            </form>
+            
+            <div class="mt-10 text-center">
+                <p class="text-gray-500">Already have an account? <a href="/login/student" class="text-indigo-600 font-bold hover:underline">Sign in here</a></p>
+            </div>
+        </div>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

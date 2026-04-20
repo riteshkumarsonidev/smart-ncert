@@ -1,0 +1,5 @@
+{
+  "name": "SMART NCERT",
+  "description": "A Flask-based AI Quiz System that generates personalized MCQs from uploaded PDFs using Gemini AI.",
+  "requestFramePermissions": []
+}
