@@ -8,6 +8,7 @@ import os
 from bson.objectid import ObjectId
 from datetime import datetime
 from flask_cors import CORS
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -29,18 +30,15 @@ if not os.path.exists(app.config["UPLOAD_FOLDER"]):
     os.makedirs(app.config["UPLOAD_FOLDER"])
 
 # Check for API Key
+load_dotenv()
+
+app.config["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
+
 if not app.config.get("GEMINI_API_KEY"):
-    # Fallback to GOOGLE_API_KEY
     api_key = os.getenv("GOOGLE_API_KEY")
     if api_key:
         app.config["GEMINI_API_KEY"] = api_key
-        print(f"✅ Using GOOGLE_API_KEY as fallback")
-
-if not app.config.get("GEMINI_API_KEY"):
-    print("⚠️ WARNING: GEMINI_API_KEY is missing. AI Quiz generation will not work.")
-else:
-    masked = app.config["GEMINI_API_KEY"][:5] + "..." + app.config["GEMINI_API_KEY"][-5:]
-    print(f"✅ GEMINI_API_KEY is active: {masked}")
+        print("# Using GOOGLE_API_KEY as fallback")
 
 @app.route("/debug-pdfs")
 def debug_pdfs():
