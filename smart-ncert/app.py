@@ -138,7 +138,15 @@ def register():
         password = request.form.get("password")
         student_class = request.form.get("class")
         
-        if db.users.find_one({"username": username}):
+      # Check if username is empty or just spaces
+        if not username or not username.strip():
+            flash("Username cannot be empty", "danger")
+            return render_template("register.html")
+
+        # Check if user exists specifically
+        existing_user = db.users.find_one({"username": username})
+        
+        if existing_user:
             flash("Username already exists", "danger")
         else:
             db.users.insert_one({
@@ -151,6 +159,7 @@ def register():
             })
             flash("Registration successful", "success")
             return redirect(url_for("login_student"))
+            
     return render_template("register.html")
 
 @app.route("/logout")
