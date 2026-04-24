@@ -50,7 +50,7 @@ class LocalDB:
                         break
                 if match:
                     result.append(item)
-            return result
+        return result
 
         def find_one(self, query):
             data = self.find(query)
